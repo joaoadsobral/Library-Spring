@@ -1,15 +1,13 @@
 package com.john.example;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "T_STUDENT")
 public class Student {
 
     @Id
+    @GeneratedValue
     private Integer id;
     @Column(
             name = "c_fname",
@@ -21,6 +19,10 @@ public class Student {
     @Column(unique = true)
     private String email;
     private int age;
+    @Column(
+            updatable = false
+    )
+    private String some_column;
 
     public Student() {
     }

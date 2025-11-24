@@ -1,5 +1,6 @@
 package com.john.example;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,5 +38,13 @@ public class Controller {
             @PathVariable("student-name") String name
     ) {
         return repository.findAllByFirstnameContaining(name);
+    }
+
+    @DeleteMapping("/students/{student-id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteStudentById(
+            @PathVariable("student-id") Integer id
+    ) {
+        repository.deleteById(id);
     }
 }
